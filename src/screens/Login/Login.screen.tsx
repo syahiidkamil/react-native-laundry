@@ -10,14 +10,18 @@ import {
 import {Mail, Eye, EyeOff, Lock} from 'lucide-react-native';
 
 import {colors} from '../../constants';
+import {useDispatch} from 'react-redux';
+import {loginRequest} from '../../redux/actions/authActions';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleLogin = () => {
-    console.log('Login');
+    dispatch(loginRequest(email, password));
   };
 
   return (

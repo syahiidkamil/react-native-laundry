@@ -1,8 +1,10 @@
 import {View, Text} from 'react-native';
+import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LoginScreen from './src/screens/Login';
+import store from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,8 +55,10 @@ const AuthStack = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <AuthStack />
+      </NavigationContainer>
+    </Provider>
   );
 }
